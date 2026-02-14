@@ -10,10 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ixo/matrix-crdt": "^1.1.0",
     "@tailwindcss/vite": "^4.1.18",
+    "buffer": "^6.0.3",
+    "matrix-js-sdk": "^37.5.0",
+    "process": "^0.11.10",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "yjs": "^13.6.29"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
