@@ -26,7 +26,7 @@ const Footer = () => {
         to="/patients"
         className={({ isActive }) =>
           `flex-1 flex items-center justify-center gap-1  rounded-2xl  ${
-            isActive ? "bg-blue-200" : ""
+            isActive ? "bg-blue-300" : ""
           }`
         }
       >
