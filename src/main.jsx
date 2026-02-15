@@ -1,16 +1,15 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import App from "./App"
-import "./App.css"
-import { Buffer } from "buffer"
-import process from "process"
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from "react-router-dom"
+import App from './App'
+import './App.css'
 
-window.global = window
-window.Buffer = Buffer
-window.process = process
-
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+
   </React.StrictMode>
 )
