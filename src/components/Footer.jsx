@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 
 const Footer = () => {
   return (
-    <footer className="w-full h-16 flex border-t border-gray-200">
+    <footer className="w-full bg-white h-16 flex border-t border-gray-200">
 
       {/* Todo */}
       <NavLink
