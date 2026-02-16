@@ -6,7 +6,6 @@ const Footer = () => {
   return (
     <footer className="w-full bg-white h-16 flex border-t border-gray-200">
 
-      {/* Todo */}
       <NavLink
         to="/" 
         className={({ isActive }) =>
@@ -21,7 +20,6 @@ const Footer = () => {
         </div>
       </NavLink>
 
-      {/* Patient */}
       <NavLink
         to="/patients"
         className={({ isActive }) =>
