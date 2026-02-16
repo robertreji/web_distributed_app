@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 
 const Footer = () => {
   return (
-    <footer className="w-full h-16 flex border-t border-gray-200">
+    <footer className="w-full bg-white h-16 flex border-t border-gray-200">
 
       {/* Todo */}
       <NavLink
@@ -26,7 +26,7 @@ const Footer = () => {
         to="/patients"
         className={({ isActive }) =>
           `flex-1 flex items-center justify-center gap-1  rounded-2xl  ${
-            isActive ? "bg-blue-200" : ""
+            isActive ? "bg-blue-300" : ""
           }`
         }
       >
