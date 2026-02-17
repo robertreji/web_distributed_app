@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { loginToMatrix } from "../../utils/login.util";
  import { useAuthenticate } from "../../store/authentication.store";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export function Login({ onLoginSuccess }) {
+export function Login() {
+  const navigaet=useNavigate()
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,9 +18,12 @@ const authenticate = useAuthenticate((state)=>state.authenticate)
     const errorMessage = await loginToMatrix(username, password);
 
     if (errorMessage === null) {
-      onLoginSuccess(username);
-      authenticate();
-      <Navigate to={"/"} replace/>
+    
+      await authenticate();
+      {
+        console.log("authenticated")
+      }
+      navigaet("/")
     } else {
       setError(errorMessage);
       setLoading(false);

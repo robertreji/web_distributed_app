@@ -2,12 +2,15 @@
 import { createClient } from "matrix-js-sdk";
 import { MatrixProvider } from "@ixo/matrix-crdt";
 import * as Y from "yjs";
+import { useYdoc } from "../store/YjsDoc";
 
 
 export const loginToMatrix = async (username,password) => {
     const MATRIX_URL = "https://matrix.org";
-    const ROOM_ALIAS = "#room-adarsh:matrix.org"; //local addr. of the matrix room
-    const yDoc = new Y.Doc();
+    const ROOM_ALIAS = "#gen-ward-1:matrix.org";
+     //local addr. of the matrix room
+    const yDoc = useYdoc.getState().yDoc
+    
     let matrixProvider= null;
   try {
     const tempClient = createClient({ baseUrl: MATRIX_URL });

@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Patient from "../components/Patients.jsx"
-
+import { useNavigate, } from 'react-router-dom'
+import { useYdoc } from '../store/YjsDoc.js'
 function Patients() {
+  const [patientArray,setPatientArray]= useState([])
+
+  const yDoc= useYdoc((state)=>state.yDoc)
+  const PatientArray =yDoc.getMap("patients")
+  console.log("patients from doc :",patientArray)
+  const navigate=useNavigate()
+
+  useEffect(()=>{
+    PatientArray.observe(()=>setPatientArray(PatientArray.toJSON()))
+    function syncui(){
+      setPatientArray(PatientArray.toJSON())
+    }
+    syncui()
+  },[])
   return (
     <div className=' flex  flex-1 items-center   pt-6  flex-col gap-3 '>
-      <Patient P_name={"Aarav Patel"} age={34} ward={"General"} bed_no={"G012"} allergy={false} />
-      <Patient P_name={"Meera Nair"} age={58} ward={"ICU"} bed_no={"I004"} allergy={true} />
-      <Patient P_name={"Rohan Sharma"} age={22} ward={"Orthopedic"} bed_no={"O019"} allergy={false} />
-      <Patient P_name={"Sneha Kulkarni"} age={45} ward={"Cardiology"} bed_no={"C007"} allergy={true} />
-      <Patient P_name={"Vikram Singh"} age={67} ward={"Neurology"} bed_no={"N010"} allergy={false} />
-      <Patient P_name={"Ananya Das"} age={29} ward={"Maternity"} bed_no={"M005"} allergy={false} />
-      <Patient P_name={"Karthik Iyer"} age={41} ward={"General"} bed_no={"G027"} allergy={true} />
-      <Patient P_name={"Priya Chatterjee"} age={36} ward={"Pediatrics"} bed_no={"P014"} allergy={false} />
+      {
+          Object.entries(patientArray || {}).map(([id,patient])=>{
+            return <Patient key={id} id={id} P_name={patient.name} age={patient.age} ward={patient.ward} bed_no={patient.bedNo}/>
+          })
+      }
+      <div onClick={()=>navigate("/addPatients")} className='w-18 h-18 flex justify-center items-center rounded-full bg-black text-white absolute bottom-18 right-6'>
+        <p className='text-3xl text-white font-bold'>+</p>
+      </div>    
     </div>
   )
 }
